@@ -25,8 +25,7 @@ class Homework04 {
 //    не должно быть кавычек
 //    val v20: Double = `1.414`
     val v21: String = "Artificial Intelligence"
-//    несколько типов данных
-//    val v22: = arrayOf('x', "A")
+    val v22: Array<Any> = arrayOf('x', "A")
     val v23: String = "Android Studio"
     val v24: Char = '@'
     val v25: Int = 1024
@@ -37,7 +36,8 @@ class Homework04 {
 //    "false" - должно быть маленькими буквами
 //    val v30: Boolean = FALSE
     val v31: Double = 0.007
-    val v32: Char = '🤯'
+//    должен быть указан юникод
+//    val v32: Char = '🤯'
     val v33 = mapOf("true" to 2, "false" to 34)
 //    не должно быть кавычек
 //    val v34: Int = ‘65535’
