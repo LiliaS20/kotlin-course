@@ -1,7 +1,7 @@
 package org.example.com.stimmax.kotlincourse.lessons.lesson08.homeworks
 
 fun main() {
-    example8(4, 5)
+    example8(260, 500)
 }
 
 fun example7(arg: String) {
@@ -43,19 +43,22 @@ fun decrypt(arg: String) {
 }
 
 fun example8(arg1: Int, arg2: Int) {
-    val count = (arg1 * arg2).toString().length + 2
+    val countMax = (arg1 * arg2).toString().length + 2 // получаем максимальную длину числа при умножении
+    val argMax = (if (arg1 > arg2) arg1 else arg2).toString().length // получаем максимальную длину аргумента
 
-    print("%${count}s".format(""))
-    for (i in 1..arg2) {
-        print("%${count}s".format(i))
+    for (i in 1..arg2) { // перечисляем в строку все перемножаемые числа
+        if (i == 1) {
+            print("%${countMax+argMax}s".format(i)) // отступ для первого числа
+        } else {
+            print("%${countMax}s".format(i))
+        }
     }
     println()
 
-    for (i in 1..arg1) {
-        print("%${count}s".format(i))
-
+    for (i in 1..arg1) { // запуск цикла для перемножения
+        print("%${argMax}s".format(i)) // перечисляем в столбик все перемножаемые числа + отступ слева
         for (j in 1..arg2) {
-            print("%${count}s".format(i * j))
+            print("%${countMax}s".format(i * j))
         }
         println()
     }
