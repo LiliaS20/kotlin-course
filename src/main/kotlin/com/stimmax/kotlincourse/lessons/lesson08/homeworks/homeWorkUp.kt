@@ -8,12 +8,11 @@ fun main() {
 // заглавной буквы, а все остальные - строчные. Используй перебор, анализ символов и замену букв на заглавную
 // с помощью метода uppercase() для конкретной буквы.
 fun example7(arg: String) {
-    lateinit var letter: String
     var result: String = arg.elementAt(0).uppercase()
+
     for (i in 1 until arg.length) {
         if (arg[i - 1] == ' ') {
-            letter = arg.elementAt(i).uppercase()
-            result = "$result$letter"
+            result = "$result${arg.elementAt(i).uppercase()}"
         } else {
             result = "$result${arg.elementAt(i)}"
         }
