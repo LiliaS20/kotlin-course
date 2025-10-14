@@ -3,7 +3,7 @@ package org.example.com.stimmax.kotlincourse.lessons.lesson11.homeworks
 fun main() {
     println(fun4(listOf(1, 2, 3, 3)))
     println(fun5("null"))
-    fun7(listOf(1, 2, null, 3))
+    fun7(listOf(1, 2, 3))
     println(multiplyByTwo(5))
     println(isEven(5))
     println(isEven(4))
@@ -54,7 +54,7 @@ fun fun6(): Double? {
 }
 
 //Принимает nullable список целых чисел, не возвращает значения и доступна только в текущем файле.
-private fun fun7(list: List<Int?>) {
+private fun fun7(list: List<Int>?) {
     println(list)
 }
 
@@ -97,7 +97,6 @@ fun printNumbersUntil(arg: Int) {
             println(i)
         }
     }
-
 }
 
 //Создайте функцию findFirstNegative, которая принимает список целых чисел и возвращает первое отрицательное
