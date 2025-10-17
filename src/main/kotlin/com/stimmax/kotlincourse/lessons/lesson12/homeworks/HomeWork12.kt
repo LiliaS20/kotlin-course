@@ -44,11 +44,11 @@ fun main() {
     println(list2.filter { it in 18..30 })
 
 //Выбрать числа, которые не делятся на 2 и 3 одновременно
-    println(list2.filterNot { it % 2 == 0 }.filterNot { it % 3 == 0 })
+    println(list2.filterNot { it % 2 == 0 && it % 3 == 0})
 
 //Очистить текстовую коллекцию от null элементов
     val listString1 = listOf("Строка 1", null, null, "Строка 4")
-    println(listString1.filter { it != null })
+    println(listString1.filterNotNull())
 
 //Преобразовать текстовую коллекцию в коллекцию длин слов
     val listString2 = listOf("Строка 1", "Строк", "Строка ", "Строка")
@@ -64,12 +64,11 @@ fun main() {
 //Взять первые 3 элемента списка
     println(listString3.take(3))
 
-
 //Распечатать квадраты элементов списка
     println(list1.map { it * it })
 
 //Группировать список по первой букве слов
-    println(listString3.groupBy { it[0] })
+    println(listString3.sorted().groupBy { it[0] })
 
 //Очистить список от дублей
     val list3 = listOf(1, 5, 1, 4, 5, 3, 3)
@@ -94,6 +93,10 @@ fun main() {
     println(fun24(listOf(2, 3, 4, 6, 6, 7)))
 
     println("Задача 25")
+    val grades = listOf(85, 58, 90, 74, 88, 67, 95, 92, 50, 42, 12)
+    println(fun25(grades))
+
+    println("Задача 26")
     val list = listOf(
         "Стол", "табурет", "ваза", "Кружка", "Зеркало", "ковер", "Шкаф", "часы", "Люстра",
         "подушка", "Картина", "столик", "Вазон", "шторы", "Пуф", "книга", "Фоторамка",
@@ -104,10 +107,6 @@ fun main() {
         "Настольная лампа", "торшер", "Этажерка"
     )
     println(fun26(list))
-
-    println("Задача 26")
-    val grades = listOf(85, 58, 90, 74, 88, 67, 95, 92, 50, 42, 12)
-    println(fun25(grades))
 
     println("Задача 27")
     println(fun27(list))
