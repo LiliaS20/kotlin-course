@@ -88,7 +88,7 @@ fun main() {
     println(fun24(listOf(5, 10, 15, 5, 10, 15)))
     println(fun24(listOf(100, 200, 300, 400, 500, 600, 70)))
     println(fun24(listOf(-30, -45, -12, -56, -11, -23)))
-    println(fun24(listOf(1000, 1003, 1001, 1004, 1989, 1844)))
+    println(fun24(listOf(1001, 1003, 1001, 1004, 1989, 1844)))
     println(fun24(listOf(23, 14, 5, 3, 67)))
     println(fun24(listOf(2, 3, 4, 6, 6, 7)))
 
