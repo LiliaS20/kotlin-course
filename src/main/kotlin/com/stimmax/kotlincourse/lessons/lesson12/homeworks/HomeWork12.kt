@@ -1,7 +1,5 @@
 package org.example.com.stimmax.kotlincourse.lessons.lesson12.homeworks
 
-import java.text.DecimalFormat
-
 fun main() {
 
     val list1 = listOf(1, 2, 3, 4, 5, 6)
@@ -147,7 +145,8 @@ fun fun26(list: List<String>): Map<Char, List<String>> {
 }
 
 fun fun27(list: List<String>): String {
-    return DecimalFormat("#.##").format(list.map { it.length }.average()).let { "$it" }
+    val format = "%.2f"
+    return format.format(list.map { it.length }.average())
 }
 
 fun fun28(list: List<Int>): Map<String, List<Int>> {
