@@ -36,12 +36,12 @@ fun main() {
 
 //7. Найдите в словаре с названием и временем ответа сервисов только те, время ответа которых превышает заданный порог.
     val map7 = mapOf("Сервис1" to 1.22, "Сервис2" to 0.43, "Сервис3" to 0.77, "Страница4" to 2.11)
-    println(map7.filter { it.value < 1.00 })
+    println(map7.filter { it.value > 1.00 })
 
 //8. В словаре хранятся результаты тестирования API (ключ — endpoint, значение — статус ответа в виде строки).
 // Для указанного endpoint найдите статус ответа, если endpoint отсутствует, предположите, что он не был протестирован.
     val map8 = mapOf("endpoint1" to "200", "endpoint2" to "404", "endpoint3" to "200")
-    println(map8.getOrElse("endpoint4") { "Не протестирован" })
+    println(map8.getOrDefault("endpoint4", "Не протестирован"))
 
 //9. Из словаря, содержащего конфигурации тестового окружения (ключ — название параметра конфигурации,
 // значение - сама конфигурация), получите значение для "browserType". Ответ не может быть null.
@@ -50,7 +50,7 @@ fun main() {
 
 //10. Создайте копию неизменяемого словаря с данными о версиях тестируемого ПО, добавив новую версию.
     val map10 = mapOf("01.02.2025" to "1.1.1", "06.03.2025" to "1.1.2", "21.06.2025" to "1.1.3")
-    val map101 = map10.plus("26.09.2025" to "1.1.4")
+    val map101 = map10 + ("26.09.2025" to "1.1.4")
     println(map101)
 
 //11. Используя словарь с настройками тестирования для различных мобильных устройств (ключ — модель устройства,
@@ -69,13 +69,13 @@ fun main() {
 // ключе содержится требуемая версия.
     val map13 = mutableMapOf("101_1.1.1" to "Passed", "102_1.1.2" to "Failed", "103_1.1.3" to "Passed",
         "104_1.1.1" to "Skipped", "105_1.1.2" to "Failed", "106_1.1.3" to "Passed", "107_1.1.1" to "Passed")
-    println(map13.filter { it.key.contains("1.1.1")} )
+    println(map13.filterKeys { it.contains("1.1.1")} )
 
 //14. У вас есть словарь, где ключи — это названия функциональных модулей приложения, а значения — результаты
 // их тестирования. Проверьте, есть ли модули с неудачным тестированием.
     val map14 = mapOf("Модуль 1" to "Passed", "Модуль 2" to "Skipped", "Модуль 3" to "Failed", "Модуль 4" to "Passed",
         "Модуль 5" to "Failed", "Модуль 6" to "Skipped", "Модуль 7" to "Passed", "Модуль 8" to "Passed")
-    println(map14.filter { it.value == "Failed" }.keys)
+    println(map14.any { it.value == "Failed" })
 
 //15. Добавьте в изменяемый словарь с настройками тестовой среды настройки из другого словаря.
     val map15 = mutableMapOf("Samsung 4" to "settings 4", "Samsung 5" to "settings 5")
@@ -90,31 +90,27 @@ fun main() {
 
 //17. Очистите изменяемый словарь с временными данными о последнем прогоне автоматизированных тестов.
     val map17 = mutableMapOf("Прогон 1" to 23.11, "Прогон 2" to 23.11, "Прогон 3" to 23.11)
-    map17.remove(map17.keys.last())
+    map17.clear()
     println(map17)
 
 //18. Исключите из отчета по автоматизированному тестированию те случаи, где тесты были пропущены
 // (имеют статус “skipped”). Ключи - название теста, значения - статус.
     val map18 = mutableMapOf("Тест 1" to "passed", "Тест 2" to "failed", "Тест 3" to "skipped", "Тест 4" to "passed",
         "Тест 5" to "passed", "Тест 6" to "skipped")
-    val map181 = map18.filterValues { it != "skipped" }
+    val map181 = map18.filterNot { it.value == "skipped" }
     println(map181)
 
 //19. Создайте копию словаря с конфигурациями тестирования удалив из него несколько конфигураций.
     val map191 = mapOf("operatingSystem" to " Android 12", "device" to "Samsung Galaxy S21",
         "browserType" to "Yandex")
-    println(map9["browserType"])
-    val map19 = map191.filterKeys { it != "device" && it != "browserType"}
+    val map19 = map191 - listOf("operatingSystem", "device")
     println(map19)
 
 //20. Создайте отчет о тестировании, преобразовав словарь с результатами тестирования (ключ — идентификатор
 // теста, значение — результат) в список строк формата "Test ID: результат".
     val map20 = mapOf("Тест 1" to "passed", "Тест 2" to "failed", "Тест 3" to "skipped", "Тест 4" to "passed",
         "Тест 5" to "passed", "Тест 6" to "failed")
-    val list: MutableList<String> = mutableListOf()
-    map20.forEach { (id, result) ->
-        list.add("$id: $result")
-    }
+    val list = map20.map { (id, result) -> "$id: $result"}
     println(list)
 
 //21. Преобразуйте изменяемый словарь с результатами последнего тестирования в неизменяемый для архивации.
@@ -125,10 +121,7 @@ fun main() {
 // идентификаторы тестов на их строковый аналог (например через toString()).
     val map22 = mapOf(111 to "passed", 112 to "failed", 113 to "skipped", 114 to "passed",
         115 to "passed", 116 to "failed")
-    val map221: MutableMap<String, String> = mutableMapOf()
-    map22.forEach { (id, result) ->
-        map221[id.toString()] = result
-    }
+    val map221 = map22.mapKeys { it.key.toString() }
     println(map221)
 
 //23. Для словаря с оценками производительности различных версий приложения (ключи - строковая версия,
@@ -136,7 +129,7 @@ fun main() {
 // условия тестирования.
     val map23 = mutableMapOf("Версия 1" to 34.13, "Версия 2" to 54.32, "Версия 3" to 32.43, "Версия 4" to 29.56)
     val map231 = map23.mapValues {
-        map -> "%.2f".format(map.value * 1.1)
+         "%.2f".format(it.value * 1.1)
     }
     println(map231)
 
@@ -160,6 +153,6 @@ fun main() {
 // прошли успешно и содержат в названии “optional”.
     val map28 = mapOf("Тест 1 optional" to "passed", "Тест 2" to "failed", "Тест 3 optional" to "skipped", "Тест 4" to "passed",
         "Тест 5" to "passed", "Тест 6 optional" to "failed")
-    println(map28.minus(map28.filter { it.key.contains("optional") && it.value != "passed"}.keys))
+    println(map28.filter { it.key.contains("optional") && it.value != "passed"})
 
 }
