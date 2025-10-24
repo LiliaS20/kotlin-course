@@ -38,8 +38,11 @@ fun main() {
 
     val rack = Rack(mutableListOf(shelf1, shelf2, shelf3), 5)
     println(rack.printContents())
-    println()
-    println(rack.advancedRemoveShelf(1))
+    println("""
+        
+        удаленные предметы: ${rack.advancedRemoveShelf(1)}
+        
+    """.trimIndent())
     println(rack.printContents())
 
 }

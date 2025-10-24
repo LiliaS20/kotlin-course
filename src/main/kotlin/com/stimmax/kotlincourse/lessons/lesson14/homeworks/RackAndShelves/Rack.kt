@@ -17,7 +17,7 @@ class Rack(
     fun removeShelf(index: Int): List<String> {
         lateinit var list: List<String>
         if (shelves.size >= index - 1) {
-            list = shelves[index].getItems1()
+            list = shelves[index].getItems()
             shelves.removeAt(index)
         } else {
             list = emptyList()
@@ -60,8 +60,8 @@ class Rack(
                 """                
                 Индекс: $i
                 Вместимость: ${shelves[i].capacity}
-                Оставшаяся вместимость: ${shelves[i].capacity - shelves[i].getItems1().sumOf { it.length }}
-                Список предметов: ${shelves[i].getItems1()}
+                Оставшаяся вместимость: ${shelves[i].capacity - shelves[i].getItems().sumOf { it.length }}
+                Список предметов: ${shelves[i].getItems()}
                 """.trimIndent()
             )
         }
@@ -72,7 +72,7 @@ class Rack(
             return emptyList()
         }
 
-        val shelfIndex = shelves[index].getItems1()
+        val shelfIndex = shelves[index].getItems()
         shelves.removeAt(index)
 
         val sortedShelves = shelves.sortedByDescending { it.capacity }.toMutableList()
@@ -92,6 +92,6 @@ class Rack(
             }
         }
 
-        return shelvesRemove
+        return shelvesRemove.toList()
     }
 }
