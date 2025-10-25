@@ -1,12 +1,13 @@
 package org.example.com.stimmax.kotlincourse.lessons.lesson14.homeworks.RackAndShelves
 
 class Shelf(
-    val capacity: Int,
-    val item: MutableList<String>
+    val capacity: Int
 ) {
 
+    private val item: MutableList<String> = mutableListOf()
+
     fun addItem(name: String): Boolean {
-        if (item.sumOf { it.length } + name.length <= capacity) {
+        if (this.canAccommodate(name)) {
             return item.add(name)
         }
         return false

@@ -32,11 +32,23 @@ fun main() {
 
     println()
     println("---6---")
-    val shelf1 = Shelf(21, mutableListOf("0_name1", "0_name2"))
-    val shelf2 = Shelf(40, mutableListOf("1_name1", "1_name2", "1_name3", "1_name4"))
-    val shelf3 = Shelf(29, mutableListOf("2_name1", "2_name2", "2_name3"))
+    val shelf1 = Shelf(21)
+    shelf1.addItem("0_name1")
+    shelf1.addItem("0_name2")
+    val shelf2 = Shelf(40)
+    shelf2.addItem("1_name1")
+    shelf2.addItem("1_name2")
+    shelf2.addItem("1_name3")
+    shelf2.addItem("1_name4")
+    val shelf3 = Shelf(29)
+    shelf3.addItem("2_name1")
+    shelf3.addItem("2_name2")
+    shelf3.addItem("2_name3")
 
-    val rack = Rack(mutableListOf(shelf1, shelf2, shelf3), 5)
+    val rack = Rack(5)
+    rack.addShelf(shelf1)
+    rack.addShelf(shelf2)
+    rack.addShelf(shelf3)
     println(rack.printContents())
     println("""
         

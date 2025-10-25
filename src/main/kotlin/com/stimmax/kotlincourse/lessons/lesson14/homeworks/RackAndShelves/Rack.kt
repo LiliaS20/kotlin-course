@@ -3,9 +3,10 @@ package org.example.com.stimmax.kotlincourse.lessons.lesson14.homeworks.RackAndS
 import kotlin.collections.sumOf
 
 class Rack(
-    val shelves: MutableList<Shelf>,
     val countShelf: Int
 ) {
+
+    private val shelves: MutableList<Shelf> = mutableListOf()
 
     fun addShelf(shelf: Shelf): Boolean {
         if (shelves.size + 1 <= countShelf || !shelves.contains(shelf)) {
@@ -93,5 +94,20 @@ class Rack(
         }
 
         return shelvesRemove.toList()
+    }
+
+    fun advancedRemoveShelf1(index: Int): List<String> {
+        if (index !in shelves.indices) {
+            return emptyList()
+        }
+        val notReplacedItems = mutableListOf<String>()
+        val otherShelves = shelves - shelves[index]
+        for (item in shelves[index].getItems()) {
+            if (otherShelves.none { it.addItem(item) }) {
+                notReplacedItems.add(item)
+            }
+        }
+        shelves.removeAt(index)
+        return notReplacedItems.toList()
     }
 }
