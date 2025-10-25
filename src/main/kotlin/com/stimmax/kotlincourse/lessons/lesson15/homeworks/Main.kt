@@ -44,9 +44,4 @@ fun main() {
     ordinalNumbers.forEach { materials7.addMaterial(it) }
     materials7.addMap(mapOf("1" to "один", "2" to "два"))
     println(materials7.extractMaterials())
-
-    val materials8 = Task7()
-    ordinalNumbers.forEach { materials8.addMaterial(it) }
-    materials8.ааа()
-    println(materials8.extractMaterials())
 }
