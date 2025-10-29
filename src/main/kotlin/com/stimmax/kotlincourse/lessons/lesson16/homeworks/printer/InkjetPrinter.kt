@@ -5,7 +5,7 @@ class InkjetPrinter: Printer() {
     private val map = listOf(
         "\u001B[30m" to "\u001B[47m", // черный на белом
         "\u001B[35m" to "\u001B[41m", // розовый на красном
-        "\u001B[40m" to "\u001B[36m" //
+        "\u001B[40m" to "\u001B[42m" //
     )
 
     override fun print(str: String) {

@@ -4,10 +4,12 @@ import org.example.com.stimmax.kotlincourse.lessons.lesson16.homeworks.animals.A
 import org.example.com.stimmax.kotlincourse.lessons.lesson16.homeworks.animals.Bird
 import org.example.com.stimmax.kotlincourse.lessons.lesson16.homeworks.animals.Cat
 import org.example.com.stimmax.kotlincourse.lessons.lesson16.homeworks.animals.Dog
+import org.example.com.stimmax.kotlincourse.lessons.lesson16.homeworks.cart.CartOfGoods
 import org.example.com.stimmax.kotlincourse.lessons.lesson16.homeworks.fugure.Circle
 import org.example.com.stimmax.kotlincourse.lessons.lesson16.homeworks.fugure.Shape
 import org.example.com.stimmax.kotlincourse.lessons.lesson16.homeworks.fugure.Square
 import org.example.com.stimmax.kotlincourse.lessons.lesson16.homeworks.fugure.Triangle
+import org.example.com.stimmax.kotlincourse.lessons.lesson16.homeworks.logger.Logger
 import org.example.com.stimmax.kotlincourse.lessons.lesson16.homeworks.printer.InkjetPrinter
 import org.example.com.stimmax.kotlincourse.lessons.lesson16.homeworks.printer.LaserPrinter
 
@@ -41,4 +43,36 @@ fun main() {
             "in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, " +
             "and more recently with desktop publishing software like Aldus PageMaker including " +
             "versions of Lorem Ipsum.")
+
+    val cart = CartOfGoods()
+    println(cart.addToCart(1))
+    println(cart.addToCart(4))
+    println(cart.addToCart(1))
+
+    println(cart.addToCart(1, 5))
+    println(cart.addToCart(2, 4))
+    println(cart.addToCart(3, 4))
+
+
+    println(cart.addToCart(listOf(2, 5)))
+    println(cart.toString())
+
+    val logger = Logger()
+    logger.log("Lorem Ipsum is simply dummy text of the printing")
+    logger.log("Lorem Ipsum is simply dummy text of the printing", "WARNING")
+    logger.log("Lorem Ipsum is simply dummy text of the printing", "ERROR")
+    logger.log("Lorem Ipsum is simply dummy text of the printing", "INFO")
+
+    logger.log(listOf(
+        "Lorem Ipsum is simply dummy text of the printing",
+        "Lorem Ipsum is simply dummy text of the printing",
+        "Lorem Ipsum is simply dummy text of the printing"
+    ))
+
+    try {
+        throw ArrayIndexOutOfBoundsException("Lorem Ipsum is simply dummy text of the printing")
+    } catch (e: ArrayIndexOutOfBoundsException) {
+        logger.log(e)
+    }
+
 }
