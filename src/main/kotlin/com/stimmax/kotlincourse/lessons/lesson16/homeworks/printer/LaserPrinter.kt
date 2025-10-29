@@ -1,7 +1,5 @@
 package org.example.com.stimmax.kotlincourse.lessons.lesson16.homeworks.printer
 
-import org.example.com.stimmax.kotlincourse.lessons.lesson16.homeworks.Colors
-
 class LaserPrinter : Printer() {
 
     override fun print(str: String) {
