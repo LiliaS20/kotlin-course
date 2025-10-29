@@ -4,7 +4,7 @@ class Quadrilateral(
     color: String,
     border: Boolean,
     name: String,
-    numberOfCorners: Int,
+    numberOfCorners: List<Int>,
     sides: List<Int>
 ) : Polygon(color, border, name, numberOfCorners, sides) {
 }

@@ -4,7 +4,7 @@ open class Polygon(
     color: String,
     border: Boolean,
     name: String,
-    val numberOfCorners: Int,
+    val numberOfCorners: List<Int>,
     val sides: List<Int>
 ): GeometricShape(color, border, name) {
 

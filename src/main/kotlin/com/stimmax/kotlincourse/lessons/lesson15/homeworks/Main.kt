@@ -10,7 +10,7 @@ import org.example.com.stimmax.kotlincourse.lessons.lesson15.homeworks.materials
 fun main() {
 
     val circle = Circle("красный", false, "круг", 3)
-    val triangle = Triangle("синий", true, "треугольник", 3, listOf(5, 6, 3))
+    val triangle = Triangle("синий", true, "треугольник", listOf(3), listOf(5, 6, 3))
 
     circle.getName()
     circle.circumferenceLength()
