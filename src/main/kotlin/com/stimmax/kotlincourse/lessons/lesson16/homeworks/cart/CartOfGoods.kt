@@ -4,30 +4,27 @@ open class CartOfGoods {
 
     private val goods = mutableMapOf<Int, Int>()
 
-    fun addToCart(itemId: Int): MutableMap<Int, Int> {
+    fun addToCart(itemId: Int) {
         goods[itemId] = goods.getOrDefault(itemId, 0) + 1
-        return goods
     }
 
-    fun addToCart(itemId: Int, amount: Int): MutableMap<Int, Int> {
+    fun addToCart(itemId: Int, amount: Int) {
         goods[itemId] = goods.getOrDefault(itemId, 0) + amount
-        return goods
     }
 
-    fun addToCart(listItemId: List<Int>): MutableMap<Int, Int> {
-        listItemId.forEach { goods[it] = goods.getOrDefault(it, 0) + 1 }
-        return goods
+    fun addToCart(map: Map<Int, Int>) {
+        map.forEach { addToCart(it.key, it.value) }
+    }
+
+    fun addToCart(listItemId: List<Int>) {
+        listItemId.forEach { addToCart(it) }
     }
 
     override fun toString(): String {
-        var countAmount = 0
-        var str = ""
-        for ((itemId, amount) in goods.toSortedMap()) {
-            str += "Артикул: $itemId      Количество: $amount \n"
-            countAmount+=amount
-        }
-        return str + "Всего артикулов: ${goods.size}\nВсего товаров: $countAmount\n"
-
-
+        val countId = goods.size
+        val countAmount = goods.values.sum()
+        val list = goods.map { "Артикул: ${it.key}       Количество: ${it.value}" }
+            .joinToString("\n")
+        return list + "Всего артикулов: $countId\nВсего товаров: $countAmount\n"
     }
 }
