@@ -11,7 +11,7 @@ fun main() {
     fridge1.powerOn()
     fridge1.setTemperature(5)
 
-    val washer1 = WasherSamsung(60, "тип1", 4, 6)
+    val washer1 = WasherSamsung(60)
     washer1.powerOn()
     washer1.open()
     washer1.close()
