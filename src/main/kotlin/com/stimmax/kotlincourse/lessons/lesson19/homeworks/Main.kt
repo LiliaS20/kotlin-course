@@ -4,7 +4,7 @@ package org.example.com.stimmax.kotlincourse.lessons.lesson19.homeworks
 // если он существует, иначе возвращать null. Например, у списка из четырёх элементов - среднего элемента нет.
 fun <T> getMiddleElement(list: List<T>): T? {
     if (list.size % 2 != 0) {
-        return list.getOrNull(list.size / 2 + 1)
+        return list[list.size / 2]
     }
     return null
 }
