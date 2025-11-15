@@ -15,9 +15,8 @@ class ListHolder<T>() {
 
     private val list = mutableListOf<T>()
 
-    fun add(type: T): List<T> {
+    fun add(type: T) {
         list.add(type)
-        return list.toList()
     }
 
     fun get(): List<T> {
@@ -30,8 +29,8 @@ class ListHolder<T>() {
 //- списка элементов одного типа в список элементов другого типа
 interface Mapper<T, U> {
 
-    fun replace(element: T): U
-    fun replaceList(list: List<T>): List<U>
+    fun map(element: T): U
+    fun map(list: List<T>): List<U>
 }
 
 //4. Создай класс PhrasesToListOfStrings и имплементируй интефрейс Mapper с типами String и List<String>.
@@ -39,11 +38,11 @@ interface Mapper<T, U> {
 // Метод преобразования списков с аналогичной механикой.
 class PhrasesToListOfStrings : Mapper<String, List<String>> {
 
-    override fun replace(element: String): List<String> {
+    override fun map(element: String): List<String> {
         return element.split(" ")
     }
 
-    override fun replaceList(list: List<String>): List<List<String>> {
+    override fun map(list: List<String>): List<List<String>> {
         return list.map { it.split(" ") }
     }
 }
@@ -51,32 +50,30 @@ class PhrasesToListOfStrings : Mapper<String, List<String>> {
 //5. Создай функцию transposition с двумя дженериками, которая принимает словарь с дженериками и возвращает
 // словарь, в котором ключ и значения поменялись местами.
 fun <T, U> transposition(map: Map<T, U>): Map<U, T> {
-    val map1 = mutableMapOf<U, T>()
-    map.forEach { map1[it.value] = it.key }
-    return map1
+    return map.map { it }.associate { it.value to it.key }
 }
 
 //6. Напиши интерфейс Validator с дженериком с функцией валидации, которая будет принимать элемент с типом
 // дженерика и возвращать булево значение.
 interface Validator<T> {
 
-    fun validate(type: T): Boolean
+    fun validate(element: T): Boolean
 }
 
 //7. Создай класс StringValidator и имплементируй интерфейс Validator с типом String?. Реализуй проверку,
 // что строка не является null, не пустая и не состоит из одних пробелов.
 class StringValidator : Validator<String?> {
 
-    override fun validate(type: String?): Boolean {
-        return type?.isNotBlank() ?: false
+    override fun validate(element: String?): Boolean {
+        return element?.isNotBlank() ?: false
     }
 }
 
 //8. Создай класс OddValidator и имплементируй интерфейс Validator типизированный по Int.
 // Реализуй проверку, что число чётное.
 class OddValidator: Validator<Int> {
-    override fun validate(type: Int): Boolean {
-        return type % 2 == 0
+    override fun validate(element: Int): Boolean {
+        return element % 2 == 0
     }
 }
 
@@ -87,7 +84,7 @@ class OddValidator: Validator<Int> {
 //Ни один элемент приведённый к типу Double не равен 0.0
 class ListValidator<T : Number> : Validator<List<T?>> {
 
-    override fun validate(type: List<T?>): Boolean {
-        return type.all { it != null && it.toDouble() != 0.0 }
+    override fun validate(element: List<T?>): Boolean {
+        return element.all { it != null && it.toDouble() != 0.0 }
     }
 }
