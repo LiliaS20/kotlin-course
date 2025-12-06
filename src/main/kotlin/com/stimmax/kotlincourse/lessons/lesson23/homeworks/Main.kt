@@ -1,11 +1,15 @@
 package org.example.com.stimmax.kotlincourse.lessons.lesson23.homeworks
 
-import org.example.com.stimmax.kotlincourse.lessons.lesson11.homeworks.fun3
 import kotlin.collections.toSet
 
 fun main() {
 
-    // ЗАДАЧА 1
+// ЗАДАЧА 1
+//Создай функцию, которая принимает список чисел и возвращает среднее арифметическое всех чётных чисел этого списка. С помощью require проверь, что список не пустой.
+//Создай аналогичную анонимную функцию.
+//Создай аналогичное лямбда выражение с указанием типа.
+//Создай лямбда выражение без указания типа.
+//Проверь, что лямбда выражение работает правильно с помощью нескольких наборов данных (в том числе пустого).
 
     val fun11 = fun(list: List<Int>): Double {
         require(list.isNotEmpty())
@@ -29,7 +33,12 @@ fun main() {
     println(fun13(list1))
 
 
-    // ЗАДАЧА 2
+// ЗАДАЧА 2
+//Создай функцию, которая принимает большое число и возвращает сумму цифр этого числа. Сделай проверку, что входящее число больше нуля. Подсказка: для парсинга символа в число можно использовать функцию digitToInt()
+//Создай аналогичную анонимную функцию.
+//Создай аналогичное лямбда выражение с указанием типа.
+//Создай лямбда выражение без указания типа.
+//Проверь, что лямбда выражение работает правильно с помощью нескольких наборов данных.
 
     val fun21 = fun(arg1: Int): Int {
         require(arg1 > 0)
@@ -52,15 +61,21 @@ fun main() {
     println(fun23(123))
 
 
-    // ЗАДАЧА 3
+// ЗАДАЧА 3
+//Создай функцию-расширение списка чисел, которая будет возвращать множество дубликатов чисел (встречающихся в списке более одного раза).
+//Создай аналогичную анонимную функцию.
+//Создай аналогичное лямбда выражение с указанием типа.
+//Проверь, что лямбда выражение работает правильно с помощью нескольких наборов данных.
 
     val fun31 = fun List<Int>.(): Set<Int> {
-        return toSet().associateWith { element -> this.count { it == element } }.filter { it.value > 1 }
+        return toSet().associateWith { element -> this.count { it == element } }
+            .filter { it.value > 1 }
             .keys
     }
 
     val fun32: List<Int>.() -> Set<Int> = {
-        toSet().associateWith { element -> this.count { it == element } }.filter { it.value > 1 }
+        toSet().associateWith { element -> this.count { it == element } }
+            .filter { it.value > 1 }
             .keys
     }
 
