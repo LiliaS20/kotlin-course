@@ -17,12 +17,14 @@ class InventoryManagerTest {
 
     @Test
     fun addBallsCountTest() {
+        inventoryManager.addItem("Мяч", 3)
         inventoryManager.addItem("Мяч", 2)
         assertEquals(5, inventoryManager.getItemCount("Мяч"))
     }
 
     @Test
     fun addNewItemDumbbellsTest() {
+        inventoryManager.addItem("Мяч", 5)
         inventoryManager.addItem("Гантели", 5)
         assertEquals(5, inventoryManager.getItemCount("Мяч"))
     }
@@ -43,16 +45,19 @@ class InventoryManagerTest {
 
     @Test
     fun getBallsTest() {
+        inventoryManager.addItem("Мяч", 5)
         assertEquals(5, inventoryManager.getItemCount("Мяч"))
     }
 
     @Test
     fun getRacketsTest() {
+        inventoryManager.addItem("Ракетка", 11)
         assertEquals(0, inventoryManager.getItemCount("Ракетка"))
     }
 
     @Test
     fun removeItemCountTest() {
+        inventoryManager.addItem("Мяч", 5)
         assertEquals(true, inventoryManager.removeItem("Мяч", 1))
     }
 
@@ -63,6 +68,7 @@ class InventoryManagerTest {
 
     @Test
     fun removeAllItemTest() {
+        inventoryManager.addItem("Мяч", 4)
         assertEquals(true, inventoryManager.removeItem("Мяч", 4))
     }
 
