@@ -31,6 +31,8 @@ class InventoryManagerTest {
 
     @Test
     fun addItemCountMoreCapacityTest() {
+        inventoryManager.addItem("Мяч", 5)
+        inventoryManager.addItem("Гантели", 5)
         assertThrows(IllegalStateException::class.java) {
             inventoryManager.addItem("Гантели", 1)
         }
@@ -47,12 +49,6 @@ class InventoryManagerTest {
     fun getBallsTest() {
         inventoryManager.addItem("Мяч", 5)
         assertEquals(5, inventoryManager.getItemCount("Мяч"))
-    }
-
-    @Test
-    fun getRacketsTest() {
-        inventoryManager.addItem("Ракетка", 11)
-        assertEquals(0, inventoryManager.getItemCount("Ракетка"))
     }
 
     @Test

@@ -18,12 +18,8 @@ class InventoryManager(private val capacity: Int) {
      * @throws IllegalStateException в случае, если допустимое количество может быть превышено
      */
     fun addItem(itemName: String, quantity: Int) {
-        try {
-            checkCapacity(quantity)
-            items[itemName] = items.getOrDefault(itemName, 0) + quantity
-        } catch (e: IllegalStateException) {
-            println("Не умещается(")
-        }
+        checkCapacity(quantity)
+        items[itemName] = items.getOrDefault(itemName, 0) + quantity
     }
 
     /**
